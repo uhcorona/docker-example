@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  service1:
+    container_name: authorizationContainer
+    build: ./authorization
+    image: s1_authorization
+    ports: 
+      - 3000:3000
+  service2:
+    container_name: categoryContainer
+    build: ./category
+    image: s2_category
+    ports: 
+      - 3001:3000
+  service3:
+    container_name: postContainer
+    build: ./post
+    image: s3_post
+    ports: 
+      - 3002:3000
+    depends_on:
+      - service1
+  service4:
+    container_name: postUsers
+    build: ./users
+    image: s4_users
+    ports: 
+      - 3003:3000
+    depends_on:
+      - service1
+  service5:
+    container_name: myWebPage
+    build: ./mywebpage
+    image: s5_page
+    ports: 
+      - 80:80
+    depends_on:
+      - service1

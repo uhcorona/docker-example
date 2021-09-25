@@ -1,0 +1,11 @@
+sudo docker build -t authorization:1.0 .
+sudo docker run -itd -p 4000:3000 -v ruta_deseada:/authorization --name=authorization authorization:1.0
+sudo docker exec -it authorization /bin/ash
+sudo docker stop authorization
+sudo docker rm authorizationa
+sudo docker rmi authorization:1.0
+sudo docker-compose up -d
+sudo docker-compose down --rmi=all
+
+sudo docker images
+sudo docker ps -a
